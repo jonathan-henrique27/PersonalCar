@@ -11,9 +11,7 @@ namespace PersonalCar.Models.Domains
         //Atributos basicos
         [DisplayName("Código")]
         public int Id { get; set; }
-
-        public int MyProperty { get; set; }
-
+        
         [DisplayName("Nome")]
         public string NomeFantasia { get; set; }
 
