@@ -1,0 +1,62 @@
+﻿@model PersonalCar.Models.Domains.Cliente
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<hr />
+<h4>@ViewData["Title"]</h4>
+<hr />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeFantasia)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NomeFantasia)
+        </dd>
+    </dl>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary ">Editar</a> |
+        <a asp-action="Index">Voltar</a>
+    </div>
+    <hr />
+    <br />
+    <br />
+    <dd class="col-sm-12">
+        <p><b>Unidades</b></p>
+        <table class="table">
+            <tr>
+                <th>Código</th>
+                <th>Nome da Unidade</th>
+                <th>Razão Social</th>
+                <th>CNPJ</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+            </tr>
+            @foreach (var item in Model.UnidadeDeNegocios)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomeFantasia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RazaoSocial)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomeFantasia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cidade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomeFantasia)
+                    </td>
+                </tr>
+            }
+        </table>
+    </dd>
+</div>
+

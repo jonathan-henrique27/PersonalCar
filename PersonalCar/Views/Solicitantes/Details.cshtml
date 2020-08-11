@@ -1,0 +1,49 @@
+﻿@model PersonalCar.Models.Domains.Solicitante
+
+@{
+    ViewData["Title"] = "Detalhes do Solicitante";
+}
+
+<hr />
+<h4>@ViewData["Title"]</h4>
+<hr />
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Celular)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Celular)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cargo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UnidadeDeNegocio.NomeFantasia)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UnidadeDeNegocio.NomeFantasia)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a> |
+    <a asp-action="Index">Voltar</a>
+</div>
+>

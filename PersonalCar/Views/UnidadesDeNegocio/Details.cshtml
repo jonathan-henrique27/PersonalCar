@@ -1,0 +1,53 @@
+﻿@model PersonalCar.Models.Domains.UnidadeDeNegocio
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+
+<div class="container">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detalhes da Unidade</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <dl class="dl-horizontal">
+                    <dt>@Html.DisplayNameFor(model => model.NomeFantasia)</dt>
+                    <dd>@Html.DisplayFor(model => model.NomeFantasia)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.RazaoSocial)</dt>
+                    <dd>@Html.DisplayFor(model => model.RazaoSocial)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Cnpj)</dt>
+                    <dd>@Html.DisplayFor(model => model.Cnpj)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Endereco)</dt>
+                    <dd>@Html.DisplayFor(model => model.Endereco)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Numero)</dt>
+                    <dd>@Html.DisplayFor(model => model.Numero)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Bairro)</dt>
+                    <dd>@Html.DisplayFor(model => model.Bairro)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Cidade)</dt>
+                    <dd>@Html.DisplayFor(model => model.Cidade)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Estado)</dt>
+                    <dd>@Html.DisplayFor(model => model.Estado)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Cliente)</dt>
+                    <dd>@Html.DisplayFor(model => model.Cliente.NomeFantasia)</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Retornar para a Lista", "Index")
+</p>
