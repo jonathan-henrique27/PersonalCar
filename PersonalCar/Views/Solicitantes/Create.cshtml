@@ -3,46 +3,86 @@
 @{
     ViewData["Title"] = "Criar Solicitante";
 }
-<hr />
-<h4>@ViewData["Title"]</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
 
-            <div class="form-group">
-                <input asp-for="Solicitante.Nome" class="form-control" placeholder="Nome Completo " />
-                <span asp-validation-for="Solicitante.Nome" class="text-danger"></span>
+<div class="modal-dialog">
+    <div class="modal-content">
+        @using (Html.BeginForm())
+        {
+            <div class="modal-header">
+                <h4 class="modal-title">Criar novo Solicitante</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                </button>
             </div>
-            <div class="form-group">
-                <input asp-for="Solicitante.Email" class="form-control" placeholder="E-mail" />
-                <span asp-validation-for="Solicitante.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input asp-for="Solicitante.Telecom" class="form-control" placeholder="Telefone Comercial" />
-                <span asp-validation-for="Solicitante.Telecom" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input asp-for="Solicitante.Celular" class="form-control" placeholder="Telefone Celular" />
-                <span asp-validation-for="Solicitante.Celular" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input asp-for="Solicitante.Cargo" class="form-control" placeholder="Cargo" />
-                <span asp-validation-for="Solicitante.Cargo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Solicitante.UnidadeDeNegocioId" class="control-label"></label>
-                <select asp-for="Solicitante.UnidadeDeNegocioId" asp-items="@(new SelectList(Model.UnidadeDeNegocios, "Id", "NomeFantasia"))" class="form-control"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Criar" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
 
+            @Html.AntiForgeryToken()
+
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Solicitante.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Solicitante.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Solicitante.Nome, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Solicitante.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Solicitante.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Solicitante.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Solicitante.Telecom, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Solicitante.Telecom, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Solicitante.Telecom, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Solicitante.Celular, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Solicitante.Celular, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Solicitante.Celular, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Solicitante.Cargo, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Solicitante.Cargo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Solicitante.Cargo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Solicitante.UnidadeDeNegocioId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Solicitante.UnidadeDeNegocioId, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Solicitante.UnidadeDeNegocioId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Criar" class="btn btn-default" />
+                        <input type="button" value="Cancelar" class="btn btn-danger" data-dismiss="modal" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
 <div>
-    <a asp-action="Index">Voltar</a>
+    @Html.ActionLink("Retornar para a lista", "Index")
 </div>
 
 @section Scripts {

@@ -4,48 +4,48 @@
     ViewData["Title"] = "Deletar Unidade";
 }
 
+<div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Você tem certeza que gostaria de deletar está unidade ?</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                </button>
+
+            </div>
+            <div class="modal-body">
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>@Html.DisplayNameFor(model => model.NomeFantasia)</dt>
+                    <dd>@Html.DisplayFor(model => model.NomeFantasia)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.RazaoSocial)</dt>
+                    <dd>@Html.DisplayFor(model => model.RazaoSocial)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Cnpj)</dt>
+                    <dd>@Html.DisplayFor(model => model.Cnpj)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Cliente)</dt>
+                    <dd>@Html.DisplayFor(model => model.ClienteId)</dd>
+                </dl>
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Deletar" class="btn btn-succcess" />
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    </div>
+                }
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
     <div>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Você tem certeza que gostaria de deletar está unidade ?</h4>
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">×</span><span class="sr-only">Close</span>
-                    </button>
-
-                </div>
-                <div class="modal-body">
-                    <hr />
-                    <dl class="dl-horizontal">
-                        <dt>@Html.DisplayNameFor(model => model.NomeFantasia)</dt>
-                        <dd>@Html.DisplayFor(model => model.NomeFantasia)</dd>
-
-                        <dt>@Html.DisplayNameFor(model => model.RazaoSocial)</dt>
-                        <dd>@Html.DisplayFor(model => model.RazaoSocial)</dd>
-
-                        <dt>@Html.DisplayNameFor(model => model.Cnpj)</dt>
-                        <dd>@Html.DisplayFor(model => model.Cnpj)</dd>
-
-                        <dt>@Html.DisplayNameFor(model => model.Cliente)</dt>
-                        <dd>@Html.DisplayFor(model => model.ClienteId)</dd>
-                    </dl>
-                </div>
-                <div class="modal-footer">
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-                        <div class="form-actions no-color">
-                            <input type="submit" value="Deletar" class="btn btn-succcess" />
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                        </div>
-                    }
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-        <div>
-            @Html.ActionLink("Retornar para a Lista", "Index")
-        </div>
+        @Html.ActionLink("Retornar para a Lista", "Index")
     </div>
+</div>
 
 
 

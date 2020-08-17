@@ -10,88 +10,85 @@ using PersonalCar.Models.Domains;
 
 namespace PersonalCar.Controllers
 {
-    public class ClientesController : Controller
+    public class VouchersController : Controller
     {
         private readonly PersonalCarContext _context;
 
-        public ClientesController(PersonalCarContext context)
+        public VouchersController(PersonalCarContext context)
         {
             _context = context;
         }
 
-        // GET: Clientes
+        // GET: Vouchers
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cliente.ToListAsync());
+            return View(await _context.Voucher.ToListAsync());
         }
 
-        // GET: Clientes/Details/5
-        public async Task<IActionResult> Details(int? Id)
+        // GET: Vouchers/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
-            if (Id == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var cliente = await _context.Cliente
-                .Include(c => c.UnidadeDeNegocios)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.Id == Id);
-
-            if (cliente == null)
+            var voucher = await _context.Voucher
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (voucher == null)
             {
                 return NotFound();
             }
 
-            return View(cliente);
+            return View(voucher);
         }
 
-        // GET: Clientes/Create
+        // GET: Vouchers/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Clientes/Create
+        // POST: Vouchers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NomeFantasia")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("Id,Status,ControleDeTaxiamento,DataSolicitacao,DataInicial,DataFinal,ValorPedagio,ValorEstacionamento,KmInicial,KmFinal,Placa,ValorTotalDaViagem")] Voucher voucher)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(cliente);
+                _context.Add(voucher);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(cliente);
+            return View(voucher);
         }
 
-        // GET: Clientes/Edit/5
-        public async Task<IActionResult> Edit(int? Id)
+        // GET: Vouchers/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
-            if (Id == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var cliente = await _context.Cliente.FindAsync(Id);
-            if (cliente == null)
+            var voucher = await _context.Voucher.FindAsync(id);
+            if (voucher == null)
             {
                 return NotFound();
             }
-            return View(cliente);
+            return View(voucher);
         }
 
-        // POST: Clientes/Edit/5
+        // POST: Vouchers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int Id, [Bind("Id,NomeFantasia")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Status,ControleDeTaxiamento,DataSolicitacao,DataInicial,DataFinal,ValorPedagio,ValorEstacionamento,KmInicial,KmFinal,Placa,ValorTotalDaViagem")] Voucher voucher)
         {
-            if (Id != cliente.Id)
+            if (id != voucher.Id)
             {
                 return NotFound();
             }
@@ -100,12 +97,12 @@ namespace PersonalCar.Controllers
             {
                 try
                 {
-                    _context.Update(cliente);
+                    _context.Update(voucher);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ClienteExists(cliente.Id))
+                    if (!VoucherExists(voucher.Id))
                     {
                         return NotFound();
                     }
@@ -116,41 +113,41 @@ namespace PersonalCar.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(cliente);
+            return View(voucher);
         }
 
-        // GET: Clientes/Delete/5
-        public async Task<IActionResult> Delete(int? Id)
+        // GET: Vouchers/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
-            if (Id == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var cliente = await _context.Cliente
-                .FirstOrDefaultAsync(m => m.Id == Id);
-            if (cliente == null)
+            var voucher = await _context.Voucher
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (voucher == null)
             {
                 return NotFound();
             }
 
-            return View(cliente);
+            return View(voucher);
         }
 
-        // POST: Clientes/Delete/5
+        // POST: Vouchers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var cliente = await _context.Cliente.FindAsync(id);
-            _context.Cliente.Remove(cliente);
+            var voucher = await _context.Voucher.FindAsync(id);
+            _context.Voucher.Remove(voucher);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ClienteExists(int Id)
+        private bool VoucherExists(int id)
         {
-            return _context.Cliente.Any(e => e.Id == Id);
+            return _context.Voucher.Any(e => e.Id == id);
         }
     }
 }

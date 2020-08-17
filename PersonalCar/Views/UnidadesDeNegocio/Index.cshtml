@@ -32,9 +32,9 @@
             <td>@Html.DisplayFor(modelItem => item.Cidade)</td>
             <td>@Html.DisplayFor(modelItem => item.Estado)</td>
             <td>
-                <button class="btn btn-success details" data-id="@item.Id">Detalhes<i class="glyphicon glyphicon-file"></i></button>
-                <button class="btn btn-danger edit" data-id="@item.Id">Editar<i class="glyphicon glyphicon-edit"></i></button>
-                <button class="btn btn-primary delete" data-id="@item.Id">Deletar<i class="glyphicon glyphicon-trash"></i></button>
+                <button class="btn btn-success detailsuni" data-id="@item.Id">Detalhes<i class="glyphicon glyphicon-file"></i></button>
+                <button class="btn btn-primary edituni" data-id="@item.Id">Editar<i class="glyphicon glyphicon-edit"></i></button>
+                <button class="btn btn-danger deleteuni" data-id="@item.Id">Deletar<i class="glyphicon glyphicon-trash"></i></button>
             </td>
         </tr>
     }
@@ -50,28 +50,26 @@
                     $("#modal").modal();
                 })
             });
-            $(".details").click(function () {
+            $(".detailsuni").click(function () {
                 var id = $(this).attr("data-id");
                 $("#modal").load("/unidadesdenegocio/details/" + id, function () {
                     $("#modal").modal();
                 })
             });
 
-            $(".edit").click(function () {
+            $(".edituni").click(function () {
                 var id = $(this).attr("data-id");
                 $("#modal").load("/unidadesdenegocio/edit/" + id, function () {
                     $("#modal").modal();
                 })
             });
 
-            $(".delete").click(function () {
+            $(".deleteuni").click(function () {
                 var id = $(this).attr("data-id");
                 $("#modal").load("/unidadesdenegocio/delete/" + id, function () {
                     $("#modal").modal();
                 })
             });
-
-            ;
 
         })
     </script>

@@ -3,22 +3,33 @@
     ViewData["Title"] = "Deletar";
 }
 
-<hr />
-<h4>Você tem certeza que gostaria de deletar este cliente?</h4>
-<hr />
-<div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NomeFantasia)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NomeFantasia)
-        </dd>
-    </dl>
-
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Deletar" class="btn btn-danger" /> |
-        <a asp-action="Index">Voltar</a>
-    </form>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Você tem certeza que gostaria de deletar este cliente?</h4>
+            <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">x</span><span class="sr-only">Close</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <dl class="dl-horizontal">
+                <dt>@Html.DisplayNameFor(model => model.NomeFantasia)</dt>
+                <dd>@Html.DisplayFor(model => model.NomeFantasia)</dd>
+            </dl>
+        </div>
+        <div class="modal-footer">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions no-gutters color">
+                    <input type="submit" value="Deletar" class="btn btn-success" />
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+            }
+        </div>
+    </div>
+    <div>
+        @Html.ActionLink("Retornar para a Lista", "Index")
+    </div>
 </div>
+

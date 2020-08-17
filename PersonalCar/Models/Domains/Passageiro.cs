@@ -1,4 +1,6 @@
-﻿namespace PersonalCar.Models.Domains
+﻿using System.Collections.Generic;
+
+namespace PersonalCar.Models.Domains
 {
     public class Passageiro
     {
@@ -6,7 +8,7 @@
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Celular { get; set; }
-
+  
         //Associações
         public Voucher Voucher { get; set; }
 

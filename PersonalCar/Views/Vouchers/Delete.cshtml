@@ -1,0 +1,103 @@
+﻿@model PersonalCar.Models.Domains.Voucher
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+    <div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Deseja deletar este cliente ?</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+           
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Status)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ControleDeTaxiamento)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.ControleDeTaxiamento)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DataSolicitacao)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.DataSolicitacao)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DataInicial)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.DataInicial)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DataFinal)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.DataFinal)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ValorPedagio)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.ValorPedagio)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ValorEstacionamento)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.ValorEstacionamento)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.KmInicial)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.KmInicial)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.KmFinal)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.KmFinal)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Placa)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Placa)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ValorTotalDaViagem)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.ValorTotalDaViagem)
+                        </dd>
+                    </dl>
+                </div>
+                <div class="modal-footer">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Deletar" class="btn btn-succcess" />
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    }
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+        
+    </div>
+
+
+

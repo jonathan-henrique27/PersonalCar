@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using PersonalCar.Models.Enums;
 
 namespace PersonalCar.Models.Domains
@@ -9,15 +10,28 @@ namespace PersonalCar.Models.Domains
         // Atributos basicos da Entidade
         public int Id { get; set; }
         public VoucherStatus Status { get; set; }
+        [Display(Name = "Controle de Taxiamento")]
         public int ControleDeTaxiamento { get; set; }
+        [Display(Name = "Data de Solicitação")]
         public DateTime DataSolicitacao { get; set; }
+        [Display(Name = "Data Inicial")]
         public DateTime DataInicial { get; set; }
+        [Display(Name = "Data Final")]
         public DateTime DataFinal { get; set; }
+        [Display(Name = "Valor Pedagio")]
+        [DisplayFormat(DataFormatString = "{0:F2}")]
         public double ValorPedagio { get; set; }
+        [Display(Name = "Valor Estacionamento")]
+        [DisplayFormat(DataFormatString = "{0:F2}")]
         public double ValorEstacionamento { get; set; }
+        [Display(Name = "Km Inicial")]
         public double KmInicial { get; set; }
+        [Display(Name = "Km Final")]
         public double KmFinal { get; set; }
+        [Display(Name = "Placa")]
         public string Placa { get; set; }
+        [Display(Name = "Valor Total da Viagem")]
+        [DisplayFormat(DataFormatString = "{0:F2}")]
         public double ValorTotalDaViagem { get; set; }
 
         // Associações da Entidade Varios para UM
@@ -34,7 +48,7 @@ namespace PersonalCar.Models.Domains
 
         //Metodos
 
-        public void TotalHosrasParada(HoraParada parada)
+        public void TotalHorasParada(HoraParada parada)
         {
             HorasParado.Add(parada);
         }

@@ -1,0 +1,67 @@
+﻿@model PersonalCar.Models.Domains.Voucher
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detalhes do Voucher</h4>
+            </div>
+            <div class="modal-body">
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>@Html.DisplayNameFor(model => model.Status)</dt>
+                    <dd>@Html.DisplayFor(model => model.Status)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.ControleDeTaxiamento)</dt>
+                    <dd>@Html.DisplayFor(model => model.ControleDeTaxiamento)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.DataSolicitacao)</dt>
+                    <dd>@Html.DisplayFor(model => model.DataSolicitacao)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.DataInicial)</dt>
+                    <dd>@Html.DisplayFor(model => model.DataInicial)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.DataFinal)</dt>
+                    <dd>@Html.DisplayFor(model => model.DataFinal)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Passageiros)</dt>
+                    <dd>@Html.DisplayFor(model => model.Passageiros)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Motorista)</dt>
+                    <dd>@Html.DisplayFor(model => model.Motorista)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Veiculo)</dt>
+                    <dd>@Html.DisplayFor(model => model.Veiculo)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.Placa)</dt>
+                    <dd>@Html.DisplayFor(model => model.Placa)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.KmInicial)</dt>
+                    <dd>@Html.DisplayFor(model => model.KmInicial)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.KmFinal)</dt>
+                    <dd>@Html.DisplayFor(model => model.KmFinal)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.HorasParado)</dt>
+                    <dd>@Html.DisplayFor(model => model.HorasParado)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.ValorPedagio)</dt>
+                    <dd>@Html.DisplayFor(model => model.ValorPedagio)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.ValorEstacionamento)</dt>
+                    <dd>@Html.DisplayFor(model => model.ValorEstacionamento)</dd>
+
+                    <dt>@Html.DisplayNameFor(model => model.ValorTotalDaViagem)</dt>
+                    <dd>@Html.DisplayFor(model => model.ValorTotalDaViagem)</dd>
+                </dl>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

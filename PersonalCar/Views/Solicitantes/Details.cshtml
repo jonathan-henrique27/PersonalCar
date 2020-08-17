@@ -4,46 +4,58 @@
     ViewData["Title"] = "Detalhes do Solicitante";
 }
 
-<hr />
-<h4>@ViewData["Title"]</h4>
-<hr />
+<div class="container">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detalhes do Solicitante</h4>
+            </div>
+            <div class="modal-body">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Nome)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Celular)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Celular)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Cargo)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Cargo)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UnidadeDeNegocio.NomeFantasia)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.UnidadeDeNegocio.NomeFantasia)
+                    </dd>
+                </dl>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Retornar para a Lista", "Index")
+</p>
 
-<div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Celular)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Celular)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Cargo)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Cargo)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.UnidadeDeNegocio.NomeFantasia)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UnidadeDeNegocio.NomeFantasia)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a> |
-    <a asp-action="Index">Voltar</a>
-</div>
->
+
+
+
