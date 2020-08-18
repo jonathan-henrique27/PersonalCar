@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PersonalCar.Models.Domains
 {
@@ -6,6 +7,10 @@ namespace PersonalCar.Models.Domains
     {
         //Atributos basicos
         public int Id { get; set; }
+        [Display(Name = "Nome do Centro de Custo")]
+        [DataType(DataType.Text)]
+        [Required(ErrorMessage = "Nome é obrigatório")]
+        [StringLength(60, MinimumLength = 3, ErrorMessage = "{0} deve ter entre {2} e {1} caracteres")]
         public string Nome { get; set; }
 
         //Associações
