@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PersonalCar.Models.Domains
 {
@@ -7,6 +8,7 @@ namespace PersonalCar.Models.Domains
     {
         //Atributos Basicos
         public int Id { get; set; }
+        [Display(Name = "Nome do motorista")]
         public string Nome { get; set; }
         public int CNH { get; set; }
         public DateTime CnhVenc { get; set; }

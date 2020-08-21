@@ -12,11 +12,11 @@ namespace PersonalCar.Models.Domains
         public VoucherStatus Status { get; set; }
         [Display(Name = "Controle de Taxiamento")]
         public int ControleDeTaxiamento { get; set; }
-        [Display(Name = "Data de Solicitação")]
+        [Display(Name = "Solicitação")]
         public DateTime DataSolicitacao { get; set; }
-        [Display(Name = "Data Inicial")]
+        [Display(Name = "Inicio")]
         public DateTime DataInicial { get; set; }
-        [Display(Name = "Data Final")]
+        [Display(Name = "Final")]
         public DateTime DataFinal { get; set; }
         [Display(Name = "Valor Pedagio")]
         [DisplayFormat(DataFormatString = "{0:F2}")]

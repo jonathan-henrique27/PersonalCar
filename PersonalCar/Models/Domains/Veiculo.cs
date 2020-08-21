@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PersonalCar.Models.Domains
 {
@@ -8,6 +8,9 @@ namespace PersonalCar.Models.Domains
         // Atributos basicos
         public int Id { get; set; }
         public string Placa { get; set; }
+
+        [Display(Name = "Modelo do Veiculo")]
+        
         public string Modelo { get; set; }
         public string Ano { get; set; }
 
