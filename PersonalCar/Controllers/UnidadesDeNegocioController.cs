@@ -18,17 +18,44 @@ namespace PersonalCar.Controllers
 
         private readonly UnidadeDeNegocioService _unidadeDeNegocioService;
         private readonly ClienteService _clienteService;
+        private readonly PersonalCarContext _context;
 
-        public UnidadesDeNegocioController(UnidadeDeNegocioService unidadeDeNegocioService, ClienteService clienteService)
+        public UnidadesDeNegocioController(UnidadeDeNegocioService unidadeDeNegocioService, ClienteService clienteService, PersonalCarContext context)
         {
             _unidadeDeNegocioService = unidadeDeNegocioService;
             _clienteService = clienteService;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(
+              string sortOrder,
+                string currentFilter,
+                string searchString,
+                int? pageNumber)
         {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewData["CurrentFilter"] = searchString;
+            var unidades = from u in _context.UnidadeDeNegocio
+                           select u;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                unidades = unidades.Where(u => u.NomeFantasia.Contains(searchString));
+            }
+
+            int pageSize = 2;
             var list = _unidadeDeNegocioService.FindAll();
-            return View(list);
+            return View(await PaginatedList<UnidadeDeNegocio>.CreateAsync(unidades.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
         public IActionResult Create()
         {

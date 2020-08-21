@@ -66,5 +66,6 @@ namespace PersonalCar.Models.Domains
             return HorasParado.Where(hp => hp.Inicio >= initial && hp.Fim <= final).Count(List<HoraParada>);
         }*/
 
+        
     }
 }
