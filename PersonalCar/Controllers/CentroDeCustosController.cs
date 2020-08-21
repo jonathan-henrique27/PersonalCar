@@ -20,9 +20,36 @@ namespace PersonalCar.Controllers
         }
 
         // GET: CentroDeCustos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(
+            string sortOrder, 
+            string currentFilter,
+            string searchString,
+            int? pageNumber)
         {
-            return View(await _context.CentroDeCusto.ToListAsync());
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            var centroDeCustos = from c in _context.CentroDeCusto
+                                 select c;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                centroDeCustos = centroDeCustos.Where(c => c.Nome.Contains(searchString));
+            }
+
+            int pageSize = 1;
+            return View(await PaginatedList<CentroDeCusto>.CreateAsync(centroDeCustos.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: CentroDeCustos/Details/5

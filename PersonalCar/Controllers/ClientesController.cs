@@ -20,9 +20,35 @@ namespace PersonalCar.Controllers
         }
 
         // GET: Clientes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(
+                string sortOrder,
+                string currentFilter,
+                string searchString,
+                int? pageNumber)
         {
-            return View(await _context.Cliente.ToListAsync());
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            var clientes = from c in _context.Cliente
+                           select c;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                clientes = clientes.Where(c => c.NomeFantasia.Contains(searchString));
+
+            }
+
+            int pageSize = 3;
+            return View(await PaginatedList<Cliente>.CreateAsync(clientes.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: Clientes/Details/5

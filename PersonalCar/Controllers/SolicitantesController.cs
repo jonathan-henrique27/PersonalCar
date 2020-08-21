@@ -4,6 +4,12 @@ using PersonalCar.Models.Domains;
 using PersonalCar.Models.ViewModels;
 using PersonalCar.Models.Services;
 using PersonalCar.Models.Services.Exceptions;
+using System;
+using System.Threading.Tasks;
+using PersonalCar.Data;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using PersonalCar;
 
 namespace PersonalWeb.Controllers
 {
@@ -11,17 +17,46 @@ namespace PersonalWeb.Controllers
     {
         private readonly SolicitanteService _solicitanteService;
         private readonly UnidadeDeNegocioService _unidadeDeNegocioService;
+        private readonly PersonalCarContext _context;
 
-        public SolicitantesController(SolicitanteService solicitanteService, UnidadeDeNegocioService unidadeDeNegocioService)
+        public SolicitantesController(SolicitanteService solicitanteService, UnidadeDeNegocioService unidadeDeNegocioService, PersonalCarContext context)
         {
             _solicitanteService = solicitanteService;
             _unidadeDeNegocioService = unidadeDeNegocioService;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(
+            string sortOrder,
+            string currentFilter,
+            string searchString,
+            int? pageNumber)
         {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            var solicitantes = from s in _context.Solicitante
+                               select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                solicitantes = solicitantes.Where(s => s.Nome.Contains(searchString));
+            }
+
+            int pageSize = 1;
             var list = _solicitanteService.FindAll();
-            return View(list);
+            return View(await PaginatedList<Solicitante>.CreateAsync(solicitantes.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
         public IActionResult Create()
         {

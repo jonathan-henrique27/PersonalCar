@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PersonalCar.Models.Domains.CentroDeCusto>
+﻿@model PaginatedList<PersonalCar.Models.Domains.CentroDeCusto>
 
 @{
     ViewData["Title"] = "Centro de Custos";
@@ -7,15 +7,35 @@
 <p>
     <button class="btn btn-success create">Criar Novo Centro de Custo <i class="glyphicon glyphicon-open"></i></button>
 </p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Buscar pelo Nome de Centro de Custo: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Procurar" class="btn btn-primary" /> |
+            <a asp-action="Index">Voltar para a lista completa</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <tr>
-        <th>@Html.DisplayNameFor(model => model.Nome)</th>
+        <th>Código</th>
+
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Nome</a>
+        </th>
+
         <th></th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
+
+
+            <td>@Html.DisplayFor(modelItem => item.Id)</td>
             <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+
             <td>
                 <button class="btn btn-success details" data-id="@item.Id">Detalhes<i class="glyphicon glyphicon-file"></i></button>
                 <button class="btn btn-primary edit" data-id="@item.Id">Editar<i class="glyphicon glyphicon-edit"></i></button>
@@ -24,6 +44,26 @@
         </tr>
     }
 </table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Anterior
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Próxima
+</a>
 
 <div id="modal" class="modal fade" role="dialog" />
 
@@ -51,7 +91,7 @@
                 })
             });
 
-           $(".create").click(function () {
+            $(".create").click(function () {
                 $("#modal").load("/centrodecustos/Create", function () {
                     $("#modal").modal();
                 })

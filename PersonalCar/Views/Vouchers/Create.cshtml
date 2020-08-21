@@ -8,13 +8,21 @@
     <div class="modal-content">
         @using (Html.BeginForm())
         {
-            <div class="modal-header">
-                <h4 class="modal-title">Criar novo Voucher</h4>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">×</span><span class="sr-only">Close</span>
-                </button>
-                
+        <div class="modal-header">
+            <h4 class="modal-title">Criar novo Voucher</h4>
+            <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+            </button>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ControleDeTaxiamento, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ControleDeTaxiamento, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ControleDeTaxiamento, "", new { @class = "text-danger" })
+                </div>
             </div>
+
+        </div>
 
             @Html.AntiForgeryToken()
 
@@ -22,27 +30,15 @@
                 <div class="form-horizontal">
 
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
+                    
+
+                   
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.ControleDeTaxiamento, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.Unidade.NomeFantasia, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.ControleDeTaxiamento, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ControleDeTaxiamento, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Unidade, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Unidade, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Unidade, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.Unidade.NomeFantasia, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Unidade.NomeFantasia, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
