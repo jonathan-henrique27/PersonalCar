@@ -22,6 +22,7 @@ namespace PersonalCar.Controllers
         // GET: Vouchers
         public async Task<IActionResult> Index()
         {
+            
             return View(await _context.Voucher.ToListAsync());
         }
 
@@ -46,6 +47,7 @@ namespace PersonalCar.Controllers
         // GET: Vouchers/Create
         public IActionResult Create()
         {
+           
             return View();
         }
 
@@ -62,6 +64,7 @@ namespace PersonalCar.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+        
             return View(voucher);
         }
 

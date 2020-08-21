@@ -4,6 +4,7 @@
     {
         Aguardando = 0,
         Andamento = 1,
-        Aberto = 2
+        Aberto = 2,
+
     }
 }

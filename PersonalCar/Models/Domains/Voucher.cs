@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using PersonalCar.Models.Enums;
 
+
 namespace PersonalCar.Models.Domains
 {
     public class Voucher
@@ -10,9 +11,11 @@ namespace PersonalCar.Models.Domains
         // Atributos basicos da Entidade
         public int Id { get; set; }
         public VoucherStatus Status { get; set; }
-        [Display(Name = "Controle de Taxiamento")]
+        [Display(Name = "Taxiamento Nº")]
         public int ControleDeTaxiamento { get; set; }
         [Display(Name = "Solicitação")]
+        [DataType(DataType.DateTime)]
+       
         public DateTime DataSolicitacao { get; set; }
         [Display(Name = "Inicio")]
         public DateTime DataInicial { get; set; }
@@ -29,6 +32,7 @@ namespace PersonalCar.Models.Domains
         [Display(Name = "Km Final")]
         public double KmFinal { get; set; }
         [Display(Name = "Placa")]
+       
         public string Placa { get; set; }
         [Display(Name = "Valor Total da Viagem")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
@@ -37,6 +41,7 @@ namespace PersonalCar.Models.Domains
         // Associações da Entidade Varios para UM
         public Cliente Cliente { get; set; }
         public UnidadeDeNegocio Unidade { get; set; }
+        public Solicitante Solicitante { get; set; }
         public CentroDeCusto CentroDeCusto { get; set; }
         public Motorista Motorista { get; set; }
         public Veiculo Veiculo { get; set; }

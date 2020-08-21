@@ -56,11 +56,15 @@ button.accept-policy {
 html {
   position: relative;
   min-height: 100%;
+  
 }
 
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  box-sizing:content-box;
+  box-decoration-break:clone;
+ 
 }
 .footer {
   position: fixed;
@@ -69,14 +73,26 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
-.column {
-    float: left;
-}
 
-.left, .right {
-    width: 25%;
+.container-fluid {
+    width: 900px;
+    border: 15px solid white;
+    padding: 25px;
+    margin: 20px;
+    box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+    background-color: white;
+    align-self: center;
 }
-
-.middle {
-    width: 50%;
+content.container-fluid,div.container-fluid:before,div.container-fluid:after{
+    box-sizing:border-box;
+}
+.col-lg-10 {
+    padding: 10px;
+    border: 0;
+    box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius: 10px;
+}
+.rounded-col-lg-10 {
+    padding: 10px;
+    border-radius: 10px;
 }

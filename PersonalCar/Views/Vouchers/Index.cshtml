@@ -5,15 +5,15 @@
 }
 
 <h4>Voucher</h4>
-<h2></h2>
+
 <p>
-    <button class="btn btn-success create">Criar Novo Voucher <i class="glyphicon glyphicon-open"></i></button>
+    <a asp-action="Create">Create New</a>
 </p>
+    
+
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
+       
         <th>
             @Html.DisplayNameFor(model => model.ControleDeTaxiamento)
         </th>
@@ -34,7 +34,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.Status)</td>
+            
             <td>@Html.DisplayFor(modelItem => item.ControleDeTaxiamento)</td>
             <td>@Html.DisplayFor(modelItem => item.DataSolicitacao)</td>
             <td>@Html.DisplayFor(modelItem => item.ValorTotalDaViagem)</td>
@@ -77,11 +77,7 @@
                 })
             });
 
-            $(".create").click(function () {
-                $("#modal").load("/vouchers/Create", function () {
-                    $("#modal").modal();
-                })
-            });
+           
 
         })
     </script>
