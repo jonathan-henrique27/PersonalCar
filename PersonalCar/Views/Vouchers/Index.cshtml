@@ -4,10 +4,11 @@
     ViewData["Title"] = "Voucher";
 }
 
-<h4>Voucher</h4>
+<h2>Voucher</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a  class="btn btn-success create" id="botao" asp-action="Create" >Criar Novo Voucher</a>
+ 
 </p>
     
 
@@ -42,9 +43,9 @@
             <td>@Html.DisplayFor(modelItem => item.CentroDeCusto)</td>
 
             <td>
-                <button class="btn btn-success details" data-id="@item.Id">Detalhes<i class="glyphicon glyphicon-file"></i></button>
-                <button class="btn btn-primary edit" data-id="@item.Id">Editar<i class="glyphicon glyphicon-edit"></i></button>
-                <button class="btn btn-danger delete" data-id="@item.Id">Deletar<i class="glyphicon glyphicon-trash"></i></button>
+                <button class="btn btn-success details" id="botao" data-id="@item.Id">Detalhes<i class="glyphicon glyphicon-file"></i></button>
+                <button class="btn btn-primary edit" id="botao" data-id="@item.Id">Editar<i class="glyphicon glyphicon-edit"></i></button>
+                <button class="btn btn-danger delete" id="botao" data-id="@item.Id">Deletar<i class="glyphicon glyphicon-trash"></i></button>
             </td>
         </tr>
     }

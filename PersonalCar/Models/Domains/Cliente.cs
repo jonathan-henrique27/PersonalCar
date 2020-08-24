@@ -12,7 +12,7 @@ namespace PersonalCar.Models.Domains
         [DisplayName("Código")]
         public int Id { get; set; }
 
-        [DisplayName("Nome cliente")]
+        [DisplayName("Cliente")]
         public string NomeFantasia { get; set; }
 
         // Associações

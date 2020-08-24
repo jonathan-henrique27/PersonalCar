@@ -8,7 +8,7 @@ namespace PersonalCar.Models.Domains
         //Atributos Basico
         public int Id { get; set; }
 
-        [Display(Name = "Nome")]
+        [Display(Name = "Solicitante")]
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "Nome é obrigatório")]
         [StringLength(60, MinimumLength = 10, ErrorMessage = "{0} deve ter entre {2} e {1} caracteres")]

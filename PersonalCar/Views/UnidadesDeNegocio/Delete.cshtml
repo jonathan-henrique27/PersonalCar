@@ -15,7 +15,7 @@
 
             </div>
             <div class="modal-body">
-                <hr />
+                
                 <dl class="dl-horizontal">
                     <dt>@Html.DisplayNameFor(model => model.NomeFantasia)</dt>
                     <dd>@Html.DisplayFor(model => model.NomeFantasia)</dd>
@@ -35,8 +35,8 @@
                 {
                     @Html.AntiForgeryToken()
                     <div class="form-actions no-color">
-                        <input type="submit" value="Deletar" class="btn btn-succcess" />
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <input type="submit" id="botao" value="Deletar" class="btn btn-succcess" />
+                        <button type="button" id="botao" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     </div>
                 }
             </div>
