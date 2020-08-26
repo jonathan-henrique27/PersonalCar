@@ -14,6 +14,8 @@ namespace PersonalCar.Controllers
     {
         private readonly PersonalCarContext _context;
 
+        public UnidadeDeNegocio NomeFantasia { get; private set; }
+
         public VouchersController(PersonalCarContext context)
         {
             _context = context;
@@ -22,7 +24,7 @@ namespace PersonalCar.Controllers
         // GET: Vouchers
         public async Task<IActionResult> Index()
         {
-            
+
             return View(await _context.Voucher.ToListAsync());
         }
 
@@ -64,7 +66,7 @@ namespace PersonalCar.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-        
+          
             return View(voucher);
         }
 
