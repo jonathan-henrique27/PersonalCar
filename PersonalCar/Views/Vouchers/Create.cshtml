@@ -1,9 +1,8 @@
 ﻿@model PersonalCar.Models.ViewModels.VoucherViewModel
 
-
 @{
     ViewData["Title"] = "Voucher";
-  
+
 
 }
 
@@ -17,8 +16,8 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                     <div class="form-group col-lg-10">
-                        <label  asp-for="Clientes" class="col-sm-12 col-form-label font-weight-bold" style="padding:5px;"></label>
-                        <select  asp-for="Voucher.Cliente.NomeFantasia" asp-items="@(new SelectList(Model.Clientes,"Id","NomeFantasia"))" class="form-control " style="border-radius: 10px;"></select>
+                        <label asp-for="Clientes" class="col-sm-12 col-form-label font-weight-bold" style="padding:5px;"></label>
+                        <select asp-for="Voucher.Cliente.NomeFantasia" asp-items="@(new SelectList(Model.Clientes,"Id","NomeFantasia"))" class="form-control " style="border-radius: 10px;"></select>
                     </div>
 
 
@@ -29,7 +28,7 @@
 
                     <div class="form-group col-lg-10">
                         <label asp-for="Solicitantes" class="col-sm-12 col-form-label font-weight-bold" style="padding:5px;"></label>
-                        <select id="select"  asp-for="Voucher.Solicitante.Nome" asp-items="@(new SelectList(Model.Solicitantes,"Id","Nome"))" class="form-control" style="border-radius: 10px;"></select>
+                        <select id="select" asp-for="Voucher.Solicitante.Nome" asp-items="@(new SelectList(Model.Solicitantes,"Id","Nome"))" class="form-control" style="border-radius: 10px;"></select>
                     </div>
 
                     <div class="form-group">
