@@ -7,15 +7,23 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PersonalCar.Data;
 using PersonalCar.Models.Domains;
+using PersonalCar.Models.Services;
+using PersonalCar.Models.ViewModels;
 
 namespace PersonalCar.Controllers
 {
     public class VouchersController : Controller
     {
         private readonly PersonalCarContext _context;
-
-        public VouchersController(PersonalCarContext context)
+        
+        private readonly UnidadeDeNegocioService _unidadeDeNegocioService;
+        private readonly ClienteService _clienteService;
+        private readonly SolicitanteService _solicitanteService;
+        public VouchersController(PersonalCarContext context, ClienteService clienteService, UnidadeDeNegocioService unidadeDeNegocioService, SolicitanteService solicitanteService)
         {
+            _solicitanteService = solicitanteService;
+            _clienteService = clienteService;
+            _unidadeDeNegocioService = unidadeDeNegocioService;
             _context = context;
         }
 
@@ -47,8 +55,11 @@ namespace PersonalCar.Controllers
         // GET: Vouchers/Create
         public IActionResult Create()
         {
-
-            return View();
+            var solicitantes = _solicitanteService.FindAll();
+            var unidades = _unidadeDeNegocioService.FindAll();
+            var clientes = _clienteService.FindAll();
+            var viewModel = new VoucherViewModel { Clientes = clientes, UnidadeDeNegocios = unidades, Solicitantes = solicitantes };
+            return View(viewModel);
         }
 
         // POST: Vouchers/Create
@@ -152,5 +163,9 @@ namespace PersonalCar.Controllers
         {
             return _context.Voucher.Any(e => e.Id == id);
         }
+
+
+       
+
     }
 }
