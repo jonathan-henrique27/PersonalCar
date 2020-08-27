@@ -5,6 +5,8 @@
 
 
 }
+<a href="https://mdbootstrap.com/docs/jquery/forms/select/"
+   target="_blank"></a>
 
 <div class="container-fluid">
     <div class="row">
@@ -17,7 +19,7 @@
 
                     <div class="form-group col-lg-10">
                         <label asp-for="Clientes" class="col-sm-12 col-form-label font-weight-bold" style="padding:5px;"></label>
-                        <select asp-for="Voucher.Cliente.NomeFantasia" asp-items="@(new SelectList(Model.Clientes,"Id","NomeFantasia"))" class="form-control " style="border-radius: 10px;"></select>
+                        <select type="text" id="Clientes" asp-for="Voucher.Cliente.NomeFantasia" asp-items="@(new SelectList(Model.Clientes,"Id","NomeFantasia"))" class="form-control " style="border-radius: 10px;"></select>
                     </div>
 
 
@@ -150,6 +152,8 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
-
+     
 }
+
+
+
