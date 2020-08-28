@@ -82,17 +82,35 @@ body {
     box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
     background-color: white;
     align-self: center;
+    border-radius: 10px;
 }
-content.container-fluid,div.container-fluid:before,div.container-fluid:after{
-    box-sizing:border-box;
+content.container-fluid, div.container-fluid:before, div.container-fluid:after {
+    box-sizing: border-box;
+    border-radius: 100px;
 }
 .col-lg-10 {
     padding: 10px;
     border: 0;
-    box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+    width: 100%;
+
     border-radius: 10px;
 }
 .rounded-col-lg-10 {
     padding: 10px;
     border-radius: 10px;
+}
+input {
+    border-radius: 10px;
+}
+#botao {
+    border-radius: 10px;
+}
+h2{
+    padding-top:25px;
+}
+p{
+    padding-top:10px;
+}
+#box {
+    box-sizing:;
 }

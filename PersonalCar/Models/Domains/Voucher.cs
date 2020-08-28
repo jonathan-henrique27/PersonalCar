@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using PersonalCar.Migrations;
 using PersonalCar.Models.Enums;
-
+using PersonalCar.Models.ViewModels;
 
 namespace PersonalCar.Models.Domains
 {
@@ -48,6 +49,7 @@ namespace PersonalCar.Models.Domains
 
         // Associações da Entidade Um para Varios
         public ICollection<Passageiro> Passageiros { get; set; } = new List<Passageiro>();
+        
         public ICollection<Viagem> Viagens { get; set; } = new List<Viagem>();
         public ICollection<HoraParada> HorasParado { get; set; } = new List<HoraParada>();
 

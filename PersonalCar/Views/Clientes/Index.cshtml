@@ -4,16 +4,16 @@
     ViewData["Title"] = "Clientes";
 }
 
-<h4>Clientes</h4>
+<h2>Clientes</h2>
 <p>
-    <button class="btn btn-success create">Criar Novo Cliente <i class="glyphicon glyphicon-open"></i></button>
+    <button class="btn btn-success create" id="botao">Criar Novo Cliente <i class="glyphicon glyphicon-open"></i></button>
 </p>
 
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
             Buscar pelo Nome: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
-            <input type="submit" value="Procurar" class="btn btn-primary" /> |
+            <input type="submit" value="Procurar" id="botao" class="btn btn-primary" /> |
             <a asp-action="Index">Voltar para a lista completa</a>
         </p>
     </div>
@@ -35,9 +35,9 @@
             <td>@Html.DisplayFor(modelItem => item.NomeFantasia)</td>
 
             <td>
-                <button class="btn btn-success detailscli" data-id="@item.Id">Detalhes<i class="glyphicon glyphicon-file"></i></button>
-                <button class="btn btn-primary editcli" data-id="@item.Id">Editar<i class="glyphicon glyphicon-edit"></i></button>
-                <button class="btn btn-danger deletecli" data-id="@item.Id">Deletar<i class="glyphicon glyphicon-trash"></i></button>
+                <button class="btn btn-success detailscli" id="botao" data-id="@item.Id">Detalhes<i class="glyphicon glyphicon-file"></i></button>
+                <button class="btn btn-primary editcli" id="botao" data-id="@item.Id">Editar<i class="glyphicon glyphicon-edit"></i></button>
+                <button class="btn btn-danger deletecli" id="botao"data-id="@item.Id">Deletar<i class="glyphicon glyphicon-trash"></i></button>
             </td>
         </tr>
     }

@@ -9,7 +9,7 @@ namespace PersonalCar.Models.Domains
         [Display(Name = "Código")]
         public int Id { get; set; }
 
-        [Display(Name = "Nome da Unidade")]
+        [Display(Name = "Unidade")]
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "Nome é obrigatório")]
         [StringLength(60, MinimumLength = 3, ErrorMessage = "{0} deve ter entre {2} e {1} caracteres")]

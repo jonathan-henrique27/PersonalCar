@@ -19,5 +19,7 @@ namespace PersonalCar.Models.Services
         {
             return _context.Cliente.OrderBy(x => x.NomeFantasia).ToList();
         }
+        
+
     }
 }
