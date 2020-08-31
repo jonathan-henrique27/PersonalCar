@@ -4,6 +4,7 @@ using PersonalCar.Models.Domains;
 using PersonalCar.Models.Services.Exceptions;
 using PersonalCar.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.X509Certificates;
 
 namespace PersonalCar.Models.Services
 {
@@ -20,6 +21,7 @@ namespace PersonalCar.Models.Services
         {
             return _context.UnidadeDeNegocio.ToList();
         }
+    
         public void Insert(UnidadeDeNegocio obj)
         {
             _context.Add(obj);
@@ -30,6 +32,7 @@ namespace PersonalCar.Models.Services
         {
             return _context.UnidadeDeNegocio.Include(obj => obj.Cliente).FirstOrDefault(obj => obj.Id == id);
         }
+
         public void Remove(int id)
         {
             var obj = _context.UnidadeDeNegocio.Find(id);

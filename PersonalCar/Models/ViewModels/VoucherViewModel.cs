@@ -1,6 +1,7 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using PersonalCar.Models.Domains;
 using PersonalCar.Models.Enums;
+using SQLitePCL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,6 +16,8 @@ namespace PersonalCar.Models.ViewModels
         public ICollection<UnidadeDeNegocio> UnidadeDeNegocios { get; set; }
         public ICollection<Cliente> Clientes { get; set; }
         public ICollection<Solicitante> Solicitantes { get; set; }
+
+        
       
     }
 }
