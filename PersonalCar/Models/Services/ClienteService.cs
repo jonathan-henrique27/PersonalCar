@@ -4,6 +4,9 @@ using PersonalCar.Models.Domains;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PersonalCar.Models.Services.Exceptions;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.X509Certificates;
 
 namespace PersonalCar.Models.Services
 {
@@ -15,11 +18,10 @@ namespace PersonalCar.Models.Services
         {
            _context = context;
         }
+
         public List<Cliente> FindAll()
         {
-            return _context.Cliente.OrderBy(x => x.NomeFantasia).ToList();
+            return _context.Cliente.ToList();
         }
-        
-
     }
 }
