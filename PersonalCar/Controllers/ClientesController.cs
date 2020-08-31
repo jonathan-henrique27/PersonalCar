@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PersonalCar.Data;
@@ -26,8 +27,9 @@ namespace PersonalCar.Controllers
                 string searchString,
                 int? pageNumber)
         {
-            ViewData["CurrentSort"] = sortOrder;
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+                ViewData["CurrentSort"] = sortOrder;
+                ViewData["NameSortParm"] = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
             if (searchString != null)
             {
                 pageNumber = 1;
@@ -36,17 +38,17 @@ namespace PersonalCar.Controllers
             {
                 searchString = currentFilter;
             }
-
-            ViewData["CurrentFilter"] = searchString;
-
+            
+                ViewData["CurrentFilter"] = searchString;
+  
             var clientes = from c in _context.Cliente
                            select c;
+
             if (!string.IsNullOrEmpty(searchString))
             {
                 clientes = clientes.Where(c => c.NomeFantasia.Contains(searchString));
-
             }
-
+           
             int pageSize = 3;
             return View(await PaginatedList<Cliente>.CreateAsync(clientes.AsNoTracking(), pageNumber ?? 1, pageSize));
         }

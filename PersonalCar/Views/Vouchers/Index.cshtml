@@ -10,11 +10,11 @@
     <a  class="btn btn-success create" id="botao" asp-action="Create" >Criar Novo Voucher</a>
  
 </p>
-    
+
 
 <table class="table">
     <tr>
-       
+
         <th>
             @Html.DisplayNameFor(model => model.ControleDeTaxiamento)
         </th>
@@ -35,7 +35,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            
+
             <td>@Html.DisplayFor(modelItem => item.ControleDeTaxiamento)</td>
             <td>@Html.DisplayFor(modelItem => item.DataSolicitacao)</td>
             <td>@Html.DisplayFor(modelItem => item.ValorTotalDaViagem)</td>
@@ -78,7 +78,7 @@
                 })
             });
 
-           
+
 
         })
     </script>
