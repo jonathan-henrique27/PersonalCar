@@ -27,6 +27,7 @@ namespace PersonalCar
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddRazorPages();
 
             services.AddDbContext<PersonalCarContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("PersonalCarContext"), Builder => 
@@ -54,6 +55,7 @@ namespace PersonalCar
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -61,6 +63,7 @@ namespace PersonalCar
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }
