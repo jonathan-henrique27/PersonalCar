@@ -21,7 +21,7 @@ namespace PersonalCar.Models.Services
         {
             return _context.UnidadeDeNegocio.ToList();
         }
-    
+      
         public void Insert(UnidadeDeNegocio obj)
         {
             _context.Add(obj);
