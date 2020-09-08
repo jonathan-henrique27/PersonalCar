@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-   
+
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <link href="~/Content/styles.css" rel="stylesheet" type="text/css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -19,29 +21,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PersonalCar</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-color1" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarColor01">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="vouchers" asp-action="Index">Vouchers</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="Clientes" asp-action="Index">Clientes</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="unidadesdenegocio" asp-action="Index">Unidades</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="solicitantes" asp-action="Index">Solicitantes</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="centrodecustos" asp-action="Index">Centro de Custos</a>
-                        </li>
-                    </ul>
-                </div>
+                <partial name="_LoginPartial.cshtml" />
             </div>
         </nav>
     </header>
