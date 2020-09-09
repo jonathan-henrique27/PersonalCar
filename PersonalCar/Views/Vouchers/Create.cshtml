@@ -107,10 +107,10 @@
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Voucher.HorasParado.Count, htmlAttributes: new { @class = "col-sm-12 col-form-label font-weight-bold" })
+                        @Html.LabelFor(model => model.Voucher.HorasParado, htmlAttributes: new { @class = "col-sm-12 col-form-label font-weight-bold" })
                         <div class="col-lg-10">
-                            @Html.EditorFor(model => model.Voucher.HorasParado.Count, new { htmlAttributes = new { @class = "form-control", @style = "  border-radius: 10px;" } })
-                            @Html.ValidationMessageFor(model => model.Voucher.HorasParado.Count, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.Voucher.HorasParado, new { htmlAttributes = new { @class = "form-control", @style = "  border-radius: 10px;" } })
+                            @Html.ValidationMessageFor(model => model.Voucher.HorasParado, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -152,7 +152,7 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-     
+         
 }
 
 

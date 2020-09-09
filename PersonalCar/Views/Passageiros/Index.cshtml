@@ -1,0 +1,79 @@
+﻿@model IEnumerable<PersonalCar.Models.Domains.Passageiro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Passageiros</h1>
+<p>
+    <a class="btn btn-success create" id="botao" asp-action="Create">Criar Novo Passageiro</a>
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Celular)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Celular)
+                </td>
+                <td>
+                    <button class="btn btn-success details" id="botao" data-id="@item.Id">Detalhes<i class="glyphicon glyphicon-file"></i></button>
+                    <button class="btn btn-primary edit" id="botao" data-id="@item.Id">Editar<i class="glyphicon glyphicon-edit"></i></button>
+                    <button class="btn btn-danger delete" id="botao" data-id="@item.Id">Deletar<i class="glyphicon glyphicon-trash"></i></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div id="modal" class="modal fade" role="dialog" />
+
+@section scripts{
+    <script>
+        $(function () {
+            $(".details").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("/passageiros/details/" + id, function () {
+                    $("#modal").modal();
+                })
+            });
+
+            $(".edit").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("/passageiros/edit/" + id, function () {
+                    $("#modal").modal();
+                })
+            });
+
+            $(".delete").click(function () {
+                var id = $(this).attr("data-id");
+
+                $("#modal").load("/passageiros/delete/" + id, function () {
+                    $("#modal").modal();
+                })
+            });
+            $(".create").click(function () {
+                $("#modal").load("/passageiros/create/", function () {
+                    $("#modal").modal();
+                })
+            });
+
+
+        })
+    </script>
+}
+
