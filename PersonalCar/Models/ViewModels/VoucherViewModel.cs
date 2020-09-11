@@ -16,6 +16,8 @@ namespace PersonalCar.Models.ViewModels
         public ICollection<UnidadeDeNegocio> UnidadeDeNegocios { get; set; }
         public ICollection<Cliente> Clientes { get; set; }
         public ICollection<Solicitante> Solicitantes { get; set; }
+         
+        public ICollection<Passageiro> Passageiros { get; set; }
 
         
       

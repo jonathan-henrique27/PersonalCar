@@ -6,8 +6,7 @@
 
 <h1>Passageiros</h1>
 <p>
-    <a class="btn btn-success create" id="botao" asp-action="Create">Criar Novo Passageiro</a>
-
+    <button class="btn btn-success create" id="botao">Criar Novo Passageiro<i class="glyphicon glyphicon-open"></i></button>
 </p>
 <table class="table">
     <thead>
@@ -45,6 +44,11 @@
 @section scripts{
     <script>
         $(function () {
+            $(".create").click(function () {
+                $("#modal").load("/passageiros/create/", function () {
+                    $("#modal").modal();
+                })
+            });
             $(".details").click(function () {
                 var id = $(this).attr("data-id");
                 $("#modal").load("/passageiros/details/" + id, function () {
@@ -66,11 +70,7 @@
                     $("#modal").modal();
                 })
             });
-            $(".create").click(function () {
-                $("#modal").load("/passageiros/create/", function () {
-                    $("#modal").modal();
-                })
-            });
+         
 
 
         })
