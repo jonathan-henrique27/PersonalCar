@@ -81,9 +81,8 @@ namespace PersonalCar.Controllers
         // GET: Clientes/Create
         public IActionResult Create()
         {
-            var unidades = _unidadeDeNegocioService.FindAll();
-            var viewModel = new ClienteViewModel { UnidadeDeNegocios = unidades };
-            return View(viewModel);
+            
+            return View();
         }
 
         // POST: Clientes/Create
