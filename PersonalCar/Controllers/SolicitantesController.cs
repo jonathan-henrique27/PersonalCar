@@ -10,6 +10,8 @@ using PersonalCar.Data;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using PersonalCar;
+using PersonalCar.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace PersonalWeb.Controllers
 {
@@ -18,7 +20,6 @@ namespace PersonalWeb.Controllers
         private readonly SolicitanteService _solicitanteService;
         private readonly UnidadeDeNegocioService _unidadeDeNegocioService;
         private readonly PersonalCarContext _context;
-
         public SolicitantesController(SolicitanteService solicitanteService, UnidadeDeNegocioService unidadeDeNegocioService, PersonalCarContext context)
         {
             _solicitanteService = solicitanteService;
