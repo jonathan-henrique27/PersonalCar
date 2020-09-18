@@ -16,8 +16,9 @@ namespace PersonalCar.Models.Domains
         public string NomeFantasia { get; set; }
 
         // Associações
-        public ICollection<UnidadeDeNegocio> UnidadeDeNegocios { get; set; } = new List<UnidadeDeNegocio>();
+        public virtual ICollection<UnidadeDeNegocio> UnidadeDeNegocios { get; set; } = new List<UnidadeDeNegocio>();
         public ICollection<Voucher> Vouchers { get; set; } = new List<Voucher>();
+       
 
         //Contrutores
         public Cliente()

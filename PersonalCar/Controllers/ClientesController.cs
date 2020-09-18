@@ -8,15 +8,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PersonalCar.Data;
 using PersonalCar.Models.Domains;
+using PersonalCar.Models.Services;
+using PersonalCar.Models.ViewModels;
 
 namespace PersonalCar.Controllers
 {
     public class ClientesController : Controller
     {
         private readonly PersonalCarContext _context;
+        private readonly UnidadeDeNegocioService _unidadeDeNegocioService;
 
-        public ClientesController(PersonalCarContext context)
+        public ClientesController(PersonalCarContext context, UnidadeDeNegocioService unidadeDeNegocioService)
         {
+            _unidadeDeNegocioService = unidadeDeNegocioService;
             _context = context;
         }
 
@@ -77,6 +81,7 @@ namespace PersonalCar.Controllers
         // GET: Clientes/Create
         public IActionResult Create()
         {
+            
             return View();
         }
 

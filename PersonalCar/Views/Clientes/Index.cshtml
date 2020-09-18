@@ -6,7 +6,7 @@
 
 <h2>Clientes</h2>
 <p>
-    <button class="btn btn-success create" id="botao">Criar Novo Cliente <i class="glyphicon glyphicon-open"></i></button>
+    <button class="btn btn-success create" id="botao">Criar Novo Cliente<i class="glyphicon glyphicon-open"></i></button>
 </p>
 
 <form asp-action="Index" method="get">
@@ -68,6 +68,12 @@
 @section scripts{
     <script>
         $(function () {
+            $(".create").click(function () {
+                $("#modal").load("/clientes/create/", function () {
+                    $("#modal").modal();
+                })
+            });
+
             $(".detailscli").click(function () {
                 var id = $(this).attr("data-id");
                 $("#modal").load("/clientes/details/" + id, function () {
@@ -89,11 +95,7 @@
                 })
             });
 
-            $(".create").click(function () {
-                $("#modal").load("/clientes/create/", function () {
-                    $("#modal").modal();
-                })
-            });
+         
 
         })
     </script>

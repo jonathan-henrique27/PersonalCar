@@ -1,0 +1,45 @@
+﻿@model PersonalCar.Models.Domains.Passageiro
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Você tem certeza que gostaria de deletar está unidade ?</h4>
+            <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+            </button>
+
+        </div>
+        <div class="modal-body">
+
+            <dl class="dl-horizontal">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Nome)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Nome)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Celular)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Celular)
+                </dd>
+            </dl>
+
+            <div class="modal-footer">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions no-color">
+                        <input type="submit" id="botao" value="Deletar" class="btn btn-succcess" />
+                        <button type="button" id="botao" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
