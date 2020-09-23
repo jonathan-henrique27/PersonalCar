@@ -32,6 +32,8 @@ namespace PersonalCar
             services.AddDbContext<PersonalCarContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("PersonalCarContext"), Builder => 
                     Builder.MigrationsAssembly("PersonalCar")));
+
+            services.AddScoped<SeedingService>();
             services.AddScoped<UnidadeDeNegocioService>();
             services.AddScoped<ClienteService>();
             services.AddScoped<SolicitanteService>();
