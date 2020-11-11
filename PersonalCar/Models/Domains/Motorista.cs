@@ -15,7 +15,7 @@ namespace PersonalCar.Models.Domains
         public DateTime Nascimento { get; set; }
 
         //Associações
-        public ICollection<Voucher> Vouchers { get; set; } = new List<Voucher>();
+        public virtual ICollection<Voucher> Vouchers { get; set; } = new List<Voucher>();
 
         //Construtores
         public Motorista()

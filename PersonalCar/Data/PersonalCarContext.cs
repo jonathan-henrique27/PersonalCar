@@ -22,7 +22,6 @@ namespace PersonalCar.Data
         public DbSet<Passageiro> Passageiro { get; set; }
         public DbSet<Viagem> Produto { get; set; }
 
-     
 
         public DbSet<Solicitante> Solicitante { get; set; }
         public DbSet<UnidadeDeNegocio> UnidadeDeNegocio { get; set; }

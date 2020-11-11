@@ -6,164 +6,164 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="modal-content">
-        @using (Html.BeginForm())
-        {
-            <div class="modal-header">
-                <h4 class="modal-title">Criar novo Voucher</h4>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">×</span><span class="sr-only">Close</span>
-                </button>
+<div class="modal-content">
+    @using (Html.BeginForm())
+    {
+        <div class="modal-header">
+            <h4 class="modal-title">Criar novo Voucher</h4>
+            <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+            </button>
 
-            </div>
+        </div>
 
-            @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="form">
-                        <div class="row">
-                            <div class="column">
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control", @placeholder = "Status"} })
-                                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        @Html.EditorFor(model => model.ControleDeTaxiamento, new { htmlAttributes = new { @class = "form-control", @placeholder = "Controle de Taxiamento" } })
-                                        @Html.ValidationMessageFor(model => model.ControleDeTaxiamento, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        @Html.EditorFor(model => model.Unidade.NomeFantasia, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome da Unidade" } })
-                                        @Html.ValidationMessageFor(model => model.Unidade.NomeFantasia, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        @Html.EditorFor(model => model.CentroDeCusto.Nome, new { htmlAttributes = new { @class = "form-control", @placeholder = "Centro de custo" } })
-                                        @Html.ValidationMessageFor(model => model.CentroDeCusto.Nome, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.DataSolicitacao, htmlAttributes: new { @class = "control-label col-md-2 inline",  })
-                                    <div class="col-lg-12">
-                                        @Html.EditorFor(model => model.DataSolicitacao, new { htmlAttributes = new { @class = "form-control", @placeholder = "Data de solicitação" } })
-                                        @Html.ValidationMessageFor(model => model.DataSolicitacao, "", new { @class = "text-danger" })
-                                    </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="form">
+                    <div class="row">
+                        <div class="column">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control", @placeholder = "Status" } })
+                                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                            <div class="column">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.DataInicial, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-lg-12">
-                                        @Html.EditorFor(model => model.DataInicial, new { htmlAttributes = new { @class = "form-control", @placeholder = "Data inicial" } })
-                                        @Html.ValidationMessageFor(model => model.DataInicial, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
 
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.DataFinal, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-lg-12">
-                                        @Html.EditorFor(model => model.DataFinal, new { htmlAttributes = new { @class = "form-control", @placeholder = "Data final" } })
-                                        @Html.ValidationMessageFor(model => model.DataFinal, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        @Html.EditorFor(model => model.Passageiros, new { htmlAttributes = new { @class = "form-control", @placeholder = "Passageiro" } })
-                                        @Html.ValidationMessageFor(model => model.Passageiros, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        @Html.EditorFor(model => model.Motorista.Nome, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome do motorista" } })
-                                        @Html.ValidationMessageFor(model => model.Motorista.Nome, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        
-                                        @Html.EditorFor(model => model.Veiculo.Modelo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Modelo do veiculo" } })
-                                        @Html.ValidationMessageFor(model => model.Veiculo.Modelo, "", new { @class = "text-danger" })
-                                    </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    @Html.EditorFor(model => model.ControleDeTaxiamento, new { htmlAttributes = new { @class = "form-control", @placeholder = "Controle de Taxiamento" } })
+                                    @Html.ValidationMessageFor(model => model.ControleDeTaxiamento, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                            <div class="column">
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        @Html.EditorFor(model => model.Placa, new { htmlAttributes = new { @class = "form-control", @placeholder = "Placa do veiculo" } })
-                                        @Html.ValidationMessageFor(model => model.Placa, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        @Html.EditorFor(model => model.KmInicial, new { htmlAttributes = new { @class = "form-control", @placeholder = "KM inicial" } })
-                                        @Html.ValidationMessageFor(model => model.KmInicial, "", new { @class = "text-danger" })
-                                    </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    @Html.EditorFor(model => model.UnidadeDeNegocio.NomeFantasia, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome da Unidade" } })
+                                    @Html.ValidationMessageFor(model => model.UnidadeDeNegocio.NomeFantasia, "", new { @class = "text-danger" })
                                 </div>
+                            </div>
 
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        @Html.EditorFor(model => model.KmFinal, new { htmlAttributes = new { @class = "form-control", @placeholder = "KM final" } })
-                                        @Html.ValidationMessageFor(model => model.KmFinal, "", new { @class = "text-danger" })
-                                    </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    @Html.EditorFor(model => model.CentroDeCusto.Nome, new { htmlAttributes = new { @class = "form-control", @placeholder = "Centro de custo" } })
+                                    @Html.ValidationMessageFor(model => model.CentroDeCusto.Nome, "", new { @class = "text-danger" })
                                 </div>
+                            </div>
 
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        @Html.EditorFor(model => model.HorasParado, new { htmlAttributes = new { @class = "form-control", @placeholder = "Horas paradas" } })
-                                        @Html.ValidationMessageFor(model => model.HorasParado, "", new { @class = "text-danger" })
-                                    </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DataSolicitacao, htmlAttributes: new { @class = "control-label col-md-2 inline", })
+                                <div class="col-lg-12">
+                                    @Html.EditorFor(model => model.DataSolicitacao, new { htmlAttributes = new { @class = "form-control", @placeholder = "Data de solicitação" } })
+                                    @Html.ValidationMessageFor(model => model.DataSolicitacao, "", new { @class = "text-danger" })
                                 </div>
-
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        @Html.EditorFor(model => model.ValorPedagio, new { htmlAttributes = new { @class = "form-control", @placeholder = "Valor do pedagio" } })
-                                        @Html.ValidationMessageFor(model => model.ValorPedagio, "", new { @class = "text-danger" })
-                                    </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DataInicial, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-lg-12">
+                                    @Html.EditorFor(model => model.DataInicial, new { htmlAttributes = new { @class = "form-control", @placeholder = "Data inicial" } })
+                                    @Html.ValidationMessageFor(model => model.DataInicial, "", new { @class = "text-danger" })
                                 </div>
+                            </div>
 
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        @Html.EditorFor(model => model.ValorEstacionamento, new { htmlAttributes = new { @class = "form-control", @placeholder = "Valor do estacionamento" } })
-                                        @Html.ValidationMessageFor(model => model.ValorEstacionamento, "", new { @class = "text-danger" })
-                                    </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DataFinal, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-lg-12">
+                                    @Html.EditorFor(model => model.DataFinal, new { htmlAttributes = new { @class = "form-control", @placeholder = "Data final" } })
+                                    @Html.ValidationMessageFor(model => model.DataFinal, "", new { @class = "text-danger" })
                                 </div>
+                            </div>
 
-                                <div class="form-group">
-                                    <div class="col-lg-12">
-                                        @Html.EditorFor(model => model.ValorTotalDaViagem, new { htmlAttributes = new { @class = "form-control", @placeholder = "Valor total da viagem" } })
-                                        @Html.ValidationMessageFor(model => model.ValorTotalDaViagem, "", new { @class = "text-danger" })
-                                    </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    @Html.EditorFor(model => model.Passageiros, new { htmlAttributes = new { @class = "form-control", @placeholder = "Passageiro" } })
+                                    @Html.ValidationMessageFor(model => model.Passageiros, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    @Html.EditorFor(model => model.Motorista.Nome, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome do motorista" } })
+                                    @Html.ValidationMessageFor(model => model.Motorista.Nome, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-12">
+
+                                    @Html.EditorFor(model => model.Veiculo.Modelo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Modelo do veiculo" } })
+                                    @Html.ValidationMessageFor(model => model.Veiculo.Modelo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    @Html.EditorFor(model => model.Placa, new { htmlAttributes = new { @class = "form-control", @placeholder = "Placa do veiculo" } })
+                                    @Html.ValidationMessageFor(model => model.Placa, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    @Html.EditorFor(model => model.KmInicial, new { htmlAttributes = new { @class = "form-control", @placeholder = "KM inicial" } })
+                                    @Html.ValidationMessageFor(model => model.KmInicial, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    @Html.EditorFor(model => model.KmFinal, new { htmlAttributes = new { @class = "form-control", @placeholder = "KM final" } })
+                                    @Html.ValidationMessageFor(model => model.KmFinal, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    @Html.EditorFor(model => model.HorasParado, new { htmlAttributes = new { @class = "form-control", @placeholder = "Horas paradas" } })
+                                    @Html.ValidationMessageFor(model => model.HorasParado, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    @Html.EditorFor(model => model.ValorPedagio, new { htmlAttributes = new { @class = "form-control", @placeholder = "Valor do pedagio" } })
+                                    @Html.ValidationMessageFor(model => model.ValorPedagio, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    @Html.EditorFor(model => model.ValorEstacionamento, new { htmlAttributes = new { @class = "form-control", @placeholder = "Valor do estacionamento" } })
+                                    @Html.ValidationMessageFor(model => model.ValorEstacionamento, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    @Html.EditorFor(model => model.ValorTotalDaViagem, new { htmlAttributes = new { @class = "form-control", @placeholder = "Valor total da viagem" } })
+                                    @Html.ValidationMessageFor(model => model.ValorTotalDaViagem, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
 
 
-            <div class="modal-footer">
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Criar" class="btn btn-success" />
-                        <input type="button" value="Cancelar" class="btn btn-danger" data-dismiss="modal" />
-                    </div>
+        <div class="modal-footer">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Criar" class="btn btn-success" />
+                    <input type="button" value="Cancelar" class="btn btn-danger" data-dismiss="modal" />
                 </div>
             </div>
-        }
-    </div><!-- /.modal-content -->
+        </div>
+    }
+</div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->

@@ -7,40 +7,42 @@
 <h2>Voucher</h2>
 
 <p>
-    <a  class="btn btn-success create" id="botao" asp-action="Create" >Criar Novo Voucher</a>
- 
+    <a class="btn btn-success create" id="botao" asp-action="Create">Criar Novo Voucher</a>
 </p>
-
 
 <table class="table">
     <tr>
 
-        <th>
-            @Html.DisplayNameFor(model => model.ControleDeTaxiamento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataSolicitacao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ValorTotalDaViagem)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Unidade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CentroDeCusto)
-        </th>
+        <th>@Html.DisplayNameFor(model => model.ControleDeTaxiamento)</th>
+
+        <th>@Html.DisplayNameFor(model => model.Solicitante)</th>
+
+        <th>@Html.DisplayNameFor(model => model.DataSolicitacao)</th>
+
+        <th>@Html.DisplayNameFor(model => model.UnidadeDeNegocio)</th>
+
+        <th>@Html.DisplayNameFor(model => model.CentroDeCusto)</th>
+
+        <th>@Html.DisplayNameFor(model => model.ValorTotalDaViagem)</th>
+
         <th></th>
     </tr>
+
     @foreach (var item in Model)
     {
         <tr>
 
             <td>@Html.DisplayFor(modelItem => item.ControleDeTaxiamento)</td>
+
+            <td>@Html.DisplayFor(modelItem => item.SolicitanteId)</td>
+
             <td>@Html.DisplayFor(modelItem => item.DataSolicitacao)</td>
+
+            <td>@Html.DisplayFor(modelItem => item.UnidadeDeNegocioId)</td>
+
+            <td>@Html.DisplayFor(modelItem => item.CentroDeCustoId)</td>
+
             <td>@Html.DisplayFor(modelItem => item.ValorTotalDaViagem)</td>
-            <td>@Html.DisplayFor(modelItem => item.Unidade)</td>
-            <td>@Html.DisplayFor(modelItem => item.CentroDeCusto)</td>
 
             <td>
                 <button class="btn btn-success details" id="botao" data-id="@item.Id">Detalhes<i class="glyphicon glyphicon-file"></i></button>
@@ -77,8 +79,6 @@
                     $("#modal").modal();
                 })
             });
-
-
 
         })
     </script>

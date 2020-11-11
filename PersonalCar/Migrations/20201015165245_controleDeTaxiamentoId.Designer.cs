@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PersonalCar.Data;
 
 namespace PersonalCar.Migrations
 {
     [DbContext(typeof(PersonalCarContext))]
-    partial class PersonalCarContextModelSnapshot : ModelSnapshot
+    [Migration("20201015165245_controleDeTaxiamentoId")]
+    partial class controleDeTaxiamentoId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -282,14 +284,17 @@ namespace PersonalCar.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CentroDeCustoId")
+                    b.Property<int?>("CentroDeCustoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ClienteId")
+                    b.Property<int?>("ClienteId")
                         .HasColumnType("int");
 
                     b.Property<string>("ControleDeTaxiamento")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ControleDeTaxiamentoId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("DataFinal")
                         .HasColumnType("datetime2");
@@ -312,13 +317,13 @@ namespace PersonalCar.Migrations
                     b.Property<string>("Placa")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SolicitanteId")
+                    b.Property<int?>("SolicitanteId")
                         .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int>("UnidadeDeNegocioId")
+                    b.Property<int?>("UnidadeId")
                         .HasColumnType("int");
 
                     b.Property<double>("ValorEstacionamento")
@@ -343,7 +348,7 @@ namespace PersonalCar.Migrations
 
                     b.HasIndex("SolicitanteId");
 
-                    b.HasIndex("UnidadeDeNegocioId");
+                    b.HasIndex("UnidadeId");
 
                     b.HasIndex("VeiculoId");
 
@@ -400,15 +405,11 @@ namespace PersonalCar.Migrations
                 {
                     b.HasOne("PersonalCar.Models.Domains.CentroDeCusto", "CentroDeCusto")
                         .WithMany("Vouchers")
-                        .HasForeignKey("CentroDeCustoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CentroDeCustoId");
 
                     b.HasOne("PersonalCar.Models.Domains.Cliente", "Cliente")
                         .WithMany("Vouchers")
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClienteId");
 
                     b.HasOne("PersonalCar.Models.Domains.Motorista", "Motorista")
                         .WithMany("Vouchers")
@@ -416,15 +417,11 @@ namespace PersonalCar.Migrations
 
                     b.HasOne("PersonalCar.Models.Domains.Solicitante", "Solicitante")
                         .WithMany("Vouchers")
-                        .HasForeignKey("SolicitanteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SolicitanteId");
 
-                    b.HasOne("PersonalCar.Models.Domains.UnidadeDeNegocio", "UnidadeDeNegocio")
+                    b.HasOne("PersonalCar.Models.Domains.UnidadeDeNegocio", "Unidade")
                         .WithMany("Vouchers")
-                        .HasForeignKey("UnidadeDeNegocioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UnidadeId");
 
                     b.HasOne("PersonalCar.Models.Domains.Veiculo", "Veiculo")
                         .WithMany("Vouchers")

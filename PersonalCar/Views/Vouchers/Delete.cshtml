@@ -29,6 +29,12 @@
                             @Html.DisplayFor(model => model.ControleDeTaxiamento)
                         </dd>
                         <dt>
+                            @Html.DisplayNameFor(model => model.UnidadeDeNegocio.NomeFantasia)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.UnidadeDeNegocio.NomeFantasia)
+                        </dd>
+                        <dt>
                             @Html.DisplayNameFor(model => model.DataSolicitacao)
                         </dt>
                         <dd>
@@ -89,8 +95,8 @@
                     {
                         @Html.AntiForgeryToken()
                         <div class="form-actions no-color">
-                            <input id="botao" type="submit" value="Deletar" class="btn btn-succcess" />
-                            <button id="botao" type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <input id="botao" type="submit" value="Deletar" class="btn btn-danger" />
+                            <button id="botao" type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
                         </div>
                     }
                 </div>
@@ -98,6 +104,3 @@
         </div><!-- /.modal-dialog -->
         
     </div>
-
-
-
