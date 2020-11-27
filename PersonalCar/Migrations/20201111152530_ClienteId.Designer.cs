@@ -10,8 +10,8 @@ using PersonalCar.Data;
 namespace PersonalCar.Migrations
 {
     [DbContext(typeof(PersonalCarContext))]
-    [Migration("20201015165245_controleDeTaxiamentoId")]
-    partial class controleDeTaxiamentoId
+    [Migration("20201111152530_ClienteId")]
+    partial class ClienteId
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -293,9 +293,6 @@ namespace PersonalCar.Migrations
                     b.Property<string>("ControleDeTaxiamento")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ControleDeTaxiamentoId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("DataFinal")
                         .HasColumnType("datetime2");
 
@@ -323,7 +320,7 @@ namespace PersonalCar.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UnidadeId")
+                    b.Property<int?>("UnidadeDeNegocioId")
                         .HasColumnType("int");
 
                     b.Property<double>("ValorEstacionamento")
@@ -348,7 +345,7 @@ namespace PersonalCar.Migrations
 
                     b.HasIndex("SolicitanteId");
 
-                    b.HasIndex("UnidadeId");
+                    b.HasIndex("UnidadeDeNegocioId");
 
                     b.HasIndex("VeiculoId");
 
@@ -419,9 +416,9 @@ namespace PersonalCar.Migrations
                         .WithMany("Vouchers")
                         .HasForeignKey("SolicitanteId");
 
-                    b.HasOne("PersonalCar.Models.Domains.UnidadeDeNegocio", "Unidade")
+                    b.HasOne("PersonalCar.Models.Domains.UnidadeDeNegocio", "UnidadeDeNegocio")
                         .WithMany("Vouchers")
-                        .HasForeignKey("UnidadeId");
+                        .HasForeignKey("UnidadeDeNegocioId");
 
                     b.HasOne("PersonalCar.Models.Domains.Veiculo", "Veiculo")
                         .WithMany("Vouchers")

@@ -10,14 +10,14 @@ using PersonalCar.Data;
 namespace PersonalCar.Migrations
 {
     [DbContext(typeof(PersonalCarContext))]
-    [Migration("20200813155910_voucher")]
-    partial class voucher
+    [Migration("20201111140931_VoucherId")]
+    partial class VoucherId
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.4")
+                .HasAnnotation("ProductVersion", "3.1.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -29,7 +29,9 @@ namespace PersonalCar.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(60)")
+                        .HasMaxLength(60);
 
                     b.Property<int?>("UnidadeDeNegocioId")
                         .HasColumnType("int");
@@ -285,11 +287,11 @@ namespace PersonalCar.Migrations
                     b.Property<int?>("CentroDeCustoId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ClienteId")
+                    b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ControleDeTaxiamento")
-                        .HasColumnType("int");
+                    b.Property<string>("ControleDeTaxiamento")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DataFinal")
                         .HasColumnType("datetime2");
@@ -318,7 +320,7 @@ namespace PersonalCar.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UnidadeId")
+                    b.Property<int?>("UnidadeDeNegocioId")
                         .HasColumnType("int");
 
                     b.Property<double>("ValorEstacionamento")
@@ -343,7 +345,7 @@ namespace PersonalCar.Migrations
 
                     b.HasIndex("SolicitanteId");
 
-                    b.HasIndex("UnidadeId");
+                    b.HasIndex("UnidadeDeNegocioId");
 
                     b.HasIndex("VeiculoId");
 
@@ -404,19 +406,21 @@ namespace PersonalCar.Migrations
 
                     b.HasOne("PersonalCar.Models.Domains.Cliente", "Cliente")
                         .WithMany("Vouchers")
-                        .HasForeignKey("ClienteId");
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("PersonalCar.Models.Domains.Motorista", "Motorista")
                         .WithMany("Vouchers")
                         .HasForeignKey("MotoristaId");
 
-                    b.HasOne("PersonalCar.Models.Domains.Solicitante", null)
+                    b.HasOne("PersonalCar.Models.Domains.Solicitante", "Solicitante")
                         .WithMany("Vouchers")
                         .HasForeignKey("SolicitanteId");
 
-                    b.HasOne("PersonalCar.Models.Domains.UnidadeDeNegocio", "Unidade")
+                    b.HasOne("PersonalCar.Models.Domains.UnidadeDeNegocio", "UnidadeDeNegocio")
                         .WithMany("Vouchers")
-                        .HasForeignKey("UnidadeId");
+                        .HasForeignKey("UnidadeDeNegocioId");
 
                     b.HasOne("PersonalCar.Models.Domains.Veiculo", "Veiculo")
                         .WithMany("Vouchers")

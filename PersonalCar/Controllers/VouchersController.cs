@@ -80,6 +80,7 @@ namespace PersonalCar.Controllers
             return View(voucher);
         }
 
+
         // POST: Vouchers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -94,6 +95,19 @@ namespace PersonalCar.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(voucher);
+        }
+
+
+        public JsonResult CarregarUnidades(int Id)
+        {
+            var unidade = _context.UnidadeDeNegocio.Where(x => x.ClienteId == Id).ToList();
+            return Json(new SelectList(unidade, "Id", "NomeFantasia"));
+        }
+
+        public JsonResult CarregarSolicitantes(int Id)
+        {
+            var solicitantes = _context.Solicitante.Where(x => x.UnidadeDeNegocioId == Id).ToList();
+            return Json(new SelectList(solicitantes, "Id", "Nome"));
         }
 
         // GET: Vouchers/Edit/5

@@ -58,7 +58,7 @@ namespace PersonalWeb.Controllers
                 solicitantes = solicitantes.Where(s => s.Nome.Contains(searchString));
             }
 
-            int pageSize = 1;
+            int pageSize = 5;
             var list = _solicitanteService.FindAll();
             return View(await PaginatedList<Solicitante>.CreateAsync(solicitantes.AsNoTracking(), pageNumber ?? 1, pageSize));
         }

@@ -1,4 +1,4 @@
-﻿using PersonalCar.Migrations;
+﻿
 using PersonalCar.Models.Domains;
 using System;
 using System.Collections.Generic;

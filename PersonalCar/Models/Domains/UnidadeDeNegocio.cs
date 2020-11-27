@@ -60,12 +60,12 @@ namespace PersonalCar.Models.Domains
         public string Ibge { get; set; }
 
         // Associações
-        public virtual Cliente Cliente { get; set; }
+        public Cliente Cliente { get; set; }
         [Display(Name = "Cliente")]
         public int ClienteId { get; set; }
-        public virtual ICollection<CentroDeCusto> CentroDeCustos { get; set; } = new List<CentroDeCusto>();
-        public virtual ICollection<Solicitante> Solicitantes { get; set; } = new List<Solicitante>();
-        public virtual ICollection<Voucher> Vouchers { get; set; } = new List<Voucher>();
+        public ICollection<CentroDeCusto> CentroDeCustos { get; set; } = new List<CentroDeCusto>();
+        public ICollection<Solicitante> Solicitantes { get; set; } = new List<Solicitante>();
+        public ICollection<Voucher> Vouchers { get; set; } = new List<Voucher>();
 
         //Construtores
         public UnidadeDeNegocio()

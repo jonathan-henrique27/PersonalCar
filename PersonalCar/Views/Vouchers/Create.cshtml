@@ -30,20 +30,18 @@
                         </div>
                     </div>
 
-
                     <div class="form-group">
                         @Html.LabelFor(model => model.UnidadeDeNegocio.NomeFantasia, htmlAttributes: new { @class = "col-sm-12 col-form-label font-weight-bold" })
                         <div class="col-md-10">
-                            @Html.DropDownList("Unidades", null, "Selecione a Unidade", new { @class = "form-control", @style = "border-radius: 10px;" })
+                            @Html.DropDownList("Unidades", new SelectList(Enumerable.Empty<SelectListItem>()) , null, new { @class = "form-control", @style = "border-radius: 10px;" })
                             @Html.ValidationMessageFor(model => model.UnidadeDeNegocio.NomeFantasia, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
-
                     <div class="form-group">
                         @Html.LabelFor(model => model.Solicitante.Nome, htmlAttributes: new { @class = "col-sm-12 col-form-label font-weight-bold" })
                         <div class="col-md-10">
-                            @Html.DropDownList("Solicitantes", null, "Selecione o Solicitante", new { @class = "form-control", @style = "border-radius: 10px;" })
+                            @Html.DropDownList("Solicitantes", new SelectList(Enumerable.Empty<SelectListItem>()), null, new { @class = "form-control", @style = "border-radius: 10px;" })
                             @Html.ValidationMessageFor(model => model.Solicitante.Nome, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -175,5 +173,60 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-         
+
+<script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#Clientes").change(function () {
+                $("#Unidades").empty();
+                $("#Solicitantes").empty();
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("CarregarUnidades")',
+
+                    dataType: 'json',
+
+                    data: { id: $("#Clientes").val() },
+
+                    success: function (unidades) {
+                        $("#Unidades").append('<option value="' + -1 + '">' + "Selecione a Unidade" + '</option>');
+
+                        $.each(unidades, function (i, unidade) {
+                            $("#Unidades").append('<option value="' + unidade.value + '">' + unidade.text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Falha ao recuperar unidades.' + ex);
+                    }
+                });
+                return false;
+            })
+
+            $("#Unidades").change(function () {
+                $("#Solicitantes").empty();
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("CarregarSolicitantes")',
+
+                    dataType: 'json',
+
+                    data: { id: $("#Unidades").val() },
+
+                    success: function (solicitantes) {
+                        $("#Solicitantes").append('<option value="' + -1 + '">' + "Selecione o Solicitante" + '</option>');
+
+                        $.each(solicitantes, function (i, solicitante) {
+                            $("#Solicitantes").append('<option value="' + solicitante.value + '">' + solicitante.text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Falha ao recuperar solicitantes .' + ex);
+                    }
+                });
+                return false;
+            });
+
+        })
+</script>
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using PersonalCar.Migrations;
+
 using PersonalCar.Models.Enums;
 using PersonalCar.Models.ViewModels;
 
@@ -51,24 +51,16 @@ namespace PersonalCar.Models.Domains
 
         // Associações da Entidade Varios para UM
         public Cliente Cliente { get; set; }
-        [Display(Name = "Cliente")]
-        public int ClienteId { get; set; }
 
-        public virtual UnidadeDeNegocio UnidadeDeNegocio { get; set; }
-        [Display(Name = "Unidade")]
-        public int UnidadeDeNegocioId { get; set; }
+        public UnidadeDeNegocio UnidadeDeNegocio { get; set; }
 
-        public virtual Solicitante Solicitante { get; set; }
-        [Display(Name = "Solicitante")]
-        public int SolicitanteId { get; set; }
+        public Solicitante Solicitante { get; set; }
 
-        public virtual CentroDeCusto CentroDeCusto { get; set; }
-        [Display(Name = "CentroDeCusto")]
-        public int CentroDeCustoId { get; set; }
+        public CentroDeCusto CentroDeCusto { get; set; }
 
-        public virtual Motorista Motorista { get; set; }
+        public Motorista Motorista { get; set; }
 
-        public virtual Veiculo Veiculo { get; set; }
+        public Veiculo Veiculo { get; set; }
 
         // Associações da Entidade Um para Varios
         public ICollection<Passageiro> Passageiros { get; set; } = new List<Passageiro>();

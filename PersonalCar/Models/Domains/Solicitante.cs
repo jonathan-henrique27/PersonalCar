@@ -32,11 +32,11 @@ namespace PersonalCar.Models.Domains
         public string Cargo { get; set; }
 
         //Associações
-        public virtual UnidadeDeNegocio UnidadeDeNegocio { get; set; }
+        public UnidadeDeNegocio UnidadeDeNegocio { get; set; }
         [Display(Name = "Unidade")]
         public int UnidadeDeNegocioId { get; set; }
 
-        public virtual ICollection<Voucher> Vouchers { get; set; } = new List<Voucher>();
+        public ICollection<Voucher> Vouchers { get; set; } = new List<Voucher>();
 
         //Construtores
         public Solicitante()
