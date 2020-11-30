@@ -73,10 +73,6 @@ namespace PersonalCar.Controllers
             ViewBag.Unidades = new SelectList(_context.UnidadeDeNegocio, "Id", "NomeFantasia");
             ViewBag.Solicitantes = new SelectList(_context.Solicitante, "Id", "Nome");
 
-             // var solicitantes = _solicitanteService.FindAll();
-             // var unidades = _unidadeDeNegocioService.FindAll();
-             // var clientes = _clienteService.FindAll();
-             // var viewModel = new VoucherViewModel { Clientes = clientes, UnidadeDeNegocios = unidades, Solicitantes = solicitantes };
             return View(voucher);
         }
 
@@ -96,7 +92,6 @@ namespace PersonalCar.Controllers
             }
             return View(voucher);
         }
-
 
         public JsonResult CarregarUnidades(int Id)
         {
