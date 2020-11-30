@@ -13,11 +13,11 @@ namespace PersonalCar.Models.ViewModels
     public class VoucherViewModel
     {
         public Voucher Voucher {get; set; }
-        public ICollection<UnidadeDeNegocio> UnidadeDeNegocios { get; set; }
-        public ICollection<Cliente> Clientes { get; set; }
-        public ICollection<Solicitante> Solicitantes { get; set; }
+        public virtual ICollection<UnidadeDeNegocio> UnidadeDeNegocios { get; set; }
+        public virtual ICollection<Cliente> Clientes { get; set; }
+        public virtual ICollection<Solicitante> Solicitantes { get; set; }
          
-        public ICollection<Passageiro> Passageiros { get; set; }
+        public virtual ICollection<Passageiro> Passageiros { get; set; }
 
         
       

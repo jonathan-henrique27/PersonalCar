@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PersonalCar.Migrations
 {
-    public partial class Clientes : Migration
+    public partial class VoucherId : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -86,8 +86,7 @@ namespace PersonalCar.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Codigo = table.Column<int>(nullable: false),
-                    Nome = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(maxLength: 60, nullable: false),
                     UnidadeDeNegocioId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -132,7 +131,7 @@ namespace PersonalCar.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Status = table.Column<int>(nullable: false),
-                    ControleDeTaxiamento = table.Column<int>(nullable: false),
+                    ControleDeTaxiamento = table.Column<string>(nullable: true),
                     DataSolicitacao = table.Column<DateTime>(nullable: false),
                     DataInicial = table.Column<DateTime>(nullable: false),
                     DataFinal = table.Column<DateTime>(nullable: false),
@@ -142,12 +141,12 @@ namespace PersonalCar.Migrations
                     KmFinal = table.Column<double>(nullable: false),
                     Placa = table.Column<string>(nullable: true),
                     ValorTotalDaViagem = table.Column<double>(nullable: false),
-                    ClienteId = table.Column<int>(nullable: true),
-                    UnidadeId = table.Column<int>(nullable: true),
+                    ClienteId = table.Column<int>(nullable: false),
+                    UnidadeDeNegocioId = table.Column<int>(nullable: true),
+                    SolicitanteId = table.Column<int>(nullable: true),
                     CentroDeCustoId = table.Column<int>(nullable: true),
                     MotoristaId = table.Column<int>(nullable: true),
-                    VeiculoId = table.Column<int>(nullable: true),
-                    SolicitanteId = table.Column<int>(nullable: true)
+                    VeiculoId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -163,7 +162,7 @@ namespace PersonalCar.Migrations
                         column: x => x.ClienteId,
                         principalTable: "Cliente",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Voucher_Motorista_MotoristaId",
                         column: x => x.MotoristaId,
@@ -177,8 +176,8 @@ namespace PersonalCar.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Voucher_UnidadeDeNegocio_UnidadeId",
-                        column: x => x.UnidadeId,
+                        name: "FK_Voucher_UnidadeDeNegocio_UnidadeDeNegocioId",
+                        column: x => x.UnidadeDeNegocioId,
                         principalTable: "UnidadeDeNegocio",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -307,9 +306,9 @@ namespace PersonalCar.Migrations
                 column: "SolicitanteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Voucher_UnidadeId",
+                name: "IX_Voucher_UnidadeDeNegocioId",
                 table: "Voucher",
-                column: "UnidadeId");
+                column: "UnidadeDeNegocioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Voucher_VeiculoId",

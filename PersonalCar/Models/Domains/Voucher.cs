@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using PersonalCar.Migrations;
+
 using PersonalCar.Models.Enums;
 using PersonalCar.Models.ViewModels;
 
@@ -11,40 +11,55 @@ namespace PersonalCar.Models.Domains
     {
         // Atributos basicos da Entidade
         public int Id { get; set; }
+
         public VoucherStatus Status { get; set; }
+
         [Display(Name = "Taxiamento Nº")]
-        public int ControleDeTaxiamento { get; set; }
-        [Display(Name = "Solicitação")]
+        public string ControleDeTaxiamento { get; set; }
+
+        [Display(Name = "Data Solicitação")]
         [DataType(DataType.DateTime)]
        
         public DateTime DataSolicitacao { get; set; }
+
         [Display(Name = "Inicio")]
         public DateTime DataInicial { get; set; }
+
         [Display(Name = "Final")]
         public DateTime DataFinal { get; set; }
+
         [Display(Name = "Valor Pedagio")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
         public double ValorPedagio { get; set; }
+
         [Display(Name = "Valor Estacionamento")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
         public double ValorEstacionamento { get; set; }
+
         [Display(Name = "Km Inicial")]
         public double KmInicial { get; set; }
+
         [Display(Name = "Km Final")]
         public double KmFinal { get; set; }
+
         [Display(Name = "Placa")]
-       
         public string Placa { get; set; }
+
         [Display(Name = "Valor Total da Viagem")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
         public double ValorTotalDaViagem { get; set; }
 
         // Associações da Entidade Varios para UM
         public Cliente Cliente { get; set; }
-        public UnidadeDeNegocio Unidade { get; set; }
+
+        public UnidadeDeNegocio UnidadeDeNegocio { get; set; }
+
         public Solicitante Solicitante { get; set; }
+
         public CentroDeCusto CentroDeCusto { get; set; }
+
         public Motorista Motorista { get; set; }
+
         public Veiculo Veiculo { get; set; }
 
         // Associações da Entidade Um para Varios

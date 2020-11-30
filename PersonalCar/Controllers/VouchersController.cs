@@ -30,7 +30,6 @@ namespace PersonalCar.Controllers
         // GET: Vouchers
         public async Task<IActionResult> Index()
         {
-            
             return View(await _context.Voucher.ToListAsync());
         }
 
@@ -53,14 +52,30 @@ namespace PersonalCar.Controllers
         }
 
         // GET: Vouchers/Create
-        public IActionResult Create()
+        public IActionResult Create(int id = 0)
         {
-            var solicitantes = _solicitanteService.FindAll();
-            var unidades = _unidadeDeNegocioService.FindAll();
-            var clientes = _clienteService.FindAll();
-            var viewModel = new VoucherViewModel { Clientes = clientes, UnidadeDeNegocios = unidades, Solicitantes = solicitantes };
-            return View(viewModel);
+            Voucher voucher = new Voucher();
+            var last = _context.Voucher.OrderByDescending(c => c.Id).FirstOrDefault();
+            if (id != 0)
+            {
+                voucher = _context.Voucher.Where(x => x.Id == id).FirstOrDefault<Voucher>();
+            }
+            else if (last == null)
+            {
+                voucher.ControleDeTaxiamento = "001";
+            }
+            else
+            {
+               voucher.ControleDeTaxiamento = "" + (Convert.ToInt32(last.ControleDeTaxiamento.Substring(2, last.ControleDeTaxiamento.Length - 2)) + 1).ToString("D3");
+            }
+
+            ViewBag.Clientes = new SelectList(_context.Cliente, "Id", "NomeFantasia");
+            ViewBag.Unidades = new SelectList(_context.UnidadeDeNegocio, "Id", "NomeFantasia");
+            ViewBag.Solicitantes = new SelectList(_context.Solicitante, "Id", "Nome");
+
+            return View(voucher);
         }
+
 
         // POST: Vouchers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
@@ -75,8 +90,19 @@ namespace PersonalCar.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-        
             return View(voucher);
+        }
+
+        public JsonResult CarregarUnidades(int Id)
+        {
+            var unidade = _context.UnidadeDeNegocio.Where(x => x.ClienteId == Id).ToList();
+            return Json(new SelectList(unidade, "Id", "NomeFantasia"));
+        }
+
+        public JsonResult CarregarSolicitantes(int Id)
+        {
+            var solicitantes = _context.Solicitante.Where(x => x.UnidadeDeNegocioId == Id).ToList();
+            return Json(new SelectList(solicitantes, "Id", "Nome"));
         }
 
         // GET: Vouchers/Edit/5

@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using PersonalCar;
 using PersonalCar.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace PersonalWeb.Controllers
 {
@@ -20,7 +21,9 @@ namespace PersonalWeb.Controllers
         private readonly SolicitanteService _solicitanteService;
         private readonly UnidadeDeNegocioService _unidadeDeNegocioService;
         private readonly PersonalCarContext _context;
-        public SolicitantesController(SolicitanteService solicitanteService, UnidadeDeNegocioService unidadeDeNegocioService, PersonalCarContext context)
+
+        public SolicitantesController(SolicitanteService solicitanteService,
+            UnidadeDeNegocioService unidadeDeNegocioService, PersonalCarContext context)
         {
             _solicitanteService = solicitanteService;
             _unidadeDeNegocioService = unidadeDeNegocioService;
@@ -55,15 +58,14 @@ namespace PersonalWeb.Controllers
                 solicitantes = solicitantes.Where(s => s.Nome.Contains(searchString));
             }
 
-            int pageSize = 1;
+            int pageSize = 5;
             var list = _solicitanteService.FindAll();
             return View(await PaginatedList<Solicitante>.CreateAsync(solicitantes.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
         public IActionResult Create()
         {
-            var unidadeDeNegocios = _unidadeDeNegocioService.FindAll();
-            var viewModel = new SolicitanteViewModel { UnidadeDeNegocios = unidadeDeNegocios };
-            return View(viewModel);
+             ViewBag.UnidadeDeNegocioid = new SelectList(_context.UnidadeDeNegocio, "Id", "NomeFantasia");
+            return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

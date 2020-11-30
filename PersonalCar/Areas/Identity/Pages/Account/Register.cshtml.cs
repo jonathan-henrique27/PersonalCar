@@ -69,7 +69,7 @@ namespace PersonalCar.Areas.Identity.Pages.Account
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirme a senha")]
+            [Display(Name = "Confirmação da senha")]
             [Compare("Password", ErrorMessage = "A senha e a senha de confirmação não correspondem.")]
             public string ConfirmPassword { get; set; }
         }
