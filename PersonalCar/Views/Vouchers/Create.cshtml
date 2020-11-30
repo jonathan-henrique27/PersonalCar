@@ -11,7 +11,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-8">
-            <form id="" asp-action="Create">
+            <form id="voucher-create" asp-action="Create">
                 <h3 style="font-weight:bold;">@ViewData["Title"]</h3>
                 <hr />
                 <div class="column" style="padding:15px;">
@@ -149,6 +149,7 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+<script src="~/js/site.js"></script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

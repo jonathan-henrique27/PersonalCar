@@ -2,6 +2,12 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+
+//voucher create
+
+
+
 function limpa_formulário_cep() {
     //Limpa valores do formulário de cep.
     document.getElementById('rua').value = ("");
